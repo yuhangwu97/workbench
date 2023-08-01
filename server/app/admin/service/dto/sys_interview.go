@@ -26,7 +26,6 @@ type SysInterviewInsertReq struct {
 	InterviewId   int    `uri:"interviewId"  comment:"id"`
 	InterviewName string `form:"interviewName"  comment:"名称"`
 	PostId        string `form:"postId" comment:"编码"`
-	Sort          int    `form:"sort" comment:"排序"`
 	Status        int    `form:"status"   comment:"状态"`
 	Remark        string `form:"remark"   comment:"备注"`
 	common.ControlBy

@@ -38,7 +38,7 @@ export function updateInterview(data, id) {
 // 删除岗位
 export function delInterview(postId) {
   return request({
-    url: '/api/v1/post',
+    url: '/api/v1/interview',
     method: 'delete',
     data: postId
   })

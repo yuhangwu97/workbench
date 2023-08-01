@@ -56,7 +56,10 @@ INSERT INTO sys_dict_type VALUES (8, '系统状态', 'sys_common_status', '2', '
 INSERT INTO sys_dict_type VALUES (9, '操作类型', 'sys_oper_type', '2', '操作类型列表', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
 INSERT INTO sys_dict_type VALUES (10, '通知状态', 'sys_notice_status', '2', '通知状态列表', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
 INSERT INTO sys_dict_type VALUES (11, '内容状态', 'sys_content_status', '2', '', 1, 1, '2021-05-13 19:56:40.813', '2021-05-13 19:56:40.813', NULL);
-
+INSERT INTO sys_dict_data VALUES (34, 0, '待定', '1', 'sys_interview_disable', '', '', '', '2', '', '候选待定', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:40.168', NULL);
+INSERT INTO sys_dict_data VALUES (35, 0, '面试', '2', 'sys_interview_disable', '', '', '', '2', '', '候选面试', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
+INSERT INTO sys_dict_data VALUES (36, 0, '丢弃', '3', 'sys_interview_disable', '', '', '', '2', '', '候选丢弃', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:40.168', NULL);
+INSERT INTO sys_dict_data VALUES (37, 0, '通过', '5', 'sys_interview_disable', '', '', '', '2', '', '候选通过', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
 INSERT INTO sys_job VALUES (1, '接口测试', 'DEFAULT', 1, '0/5 * * * * ', 'http://localhost:8000', '', 1, 1, 1, 0, '2021-05-13 19:56:37.914', '2021-06-14 20:59:55.417', NULL, 1, 1);
 INSERT INTO sys_job VALUES (2, '函数测试', 'DEFAULT', 2, '0/5 * * * * ', 'ExamplesOne', '参数', 1, 1, 1, 0, '2021-05-13 19:56:37.914', '2021-05-31 23:55:37.221', NULL, 1, 1);
 
@@ -191,9 +194,4 @@ INSERT INTO sys_menu VALUES (601, '', '查询候选人', 'app-group-fill', '', '
 INSERT INTO sys_menu VALUES (602, '', '新增候选人', 'app-group-fill', '', '/0/2/64/233', 'F', '', 'admin:interview:add', 64, false, '', '', 0, '0', '1', 1, 1, '2020-04-11 15:52:48.000', '2021-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (603, '', '修改候选人', 'app-group-fill', '', '/0/2/64/234', 'F', '', 'admin:interview:edit', 64, false, '', '', 0, '0', '1', 1, 1, '2020-04-11 15:52:48.000', '2021-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (604, '', '删除候选人', 'app-group-fill', '', '/0/2/64/235', 'F', '', 'admin:interview:remove', 64, false, '', '',
-
-INSERT INTO sys_dict_data VALUES (34, 0, '待定', '1', 'sys_interview_disable', '', '', '', '2', '', '候选待定', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:40.168', NULL);
-INSERT INTO sys_dict_data VALUES (35, 0, '面试', '2', 'sys_interview_disable', '', '', '', '2', '', '候选面试', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
-INSERT INTO sys_dict_data VALUES (36, 0, '丢弃', '3', 'sys_interview_disable', '', '', '', '2', '', '候选丢弃', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:40.168', NULL);
-INSERT INTO sys_dict_data VALUES (37, 0, '通过', '5', 'sys_interview_disable', '', '', '', '2', '', '候选通过', 1, 1, '2021-05-13 19:56:37.914', '2021-05-13 19:56:37.914', NULL);
 -- 数据完成 ;

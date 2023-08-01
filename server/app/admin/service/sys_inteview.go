@@ -22,6 +22,7 @@ func (e *SysInterview) GetPage(c *dto.SysInterviewPageReq, list *[]models.SysInt
 
 	err = e.Orm.Model(&data).
 		Scopes(
+			cDto.OrderDest("updated_at", false),
 			cDto.MakeCondition(c.GetNeedSearch()),
 			cDto.Paginate(c.GetPageSize(), c.GetPageIndex()),
 		).

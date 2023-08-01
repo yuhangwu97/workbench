@@ -17,18 +17,18 @@
               @keyup.enter.native="handleQuery"
             />
           </el-form-item>
-          <el-form-item label="岗位" prop="postName">
+          <el-form-item label="岗位" prop="postId">
             <el-select
-              v-model="queryParams.postName"
+              v-model="queryParams.postId"
               placeholder="岗位名称"
               clearable
               size="small"
             >
               <el-option
                 v-for="dict in postOptions"
-                :key="dict.postCode"
+                :key="dict.postId"
                 :label="dict.postName"
-                :value="dict.postCode"
+                :value="dict.postId"
               />
             </el-select>
           </el-form-item>
@@ -47,7 +47,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="创建时间">
+          <!-- <el-form-item label="操作时间">
             <el-date-picker
               v-model="dateRange"
               size="small"
@@ -58,7 +58,7 @@
               start-placeholder="开始日期"
               end-placeholder="结束日期"
             />
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item>
             <el-button
               type="primary"
@@ -140,13 +140,13 @@
             width="120"
             align="center"
             :show-overflow-tooltip="true"
-            prop="postCode"
+            prop="postId"
           /> -->
           <el-table-column
             label="岗位名称"
             align="center"
             width="120"
-            prop="postCode"
+            prop="postId"
             :show-overflow-tooltip="true"
             :formatter="postFormat"
           >
@@ -174,13 +174,13 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="创建时间"
+            label="操作时间"
             align="center"
             prop="createdAt"
             width="180"
           >
             <template slot-scope="scope">
-              <span>{{ parseTime(scope.row.createdAt) }}</span>
+              <span>{{ parseTime(scope.row.updatedAt) }}</span>
             </template>
           </el-table-column>
           <el-table-column
@@ -228,8 +228,6 @@
               <el-select
                 v-model="form.postId"
                 placeholder="岗位名称"
-                clearable
-                size="small"
               >
                 <el-option
                   v-for="dict in postOptions"
@@ -239,7 +237,7 @@
                 />
               </el-select>
             </el-form-item>
-            <el-form-item label="候选人姓名" prop="interviewName">
+            <el-form-item label="候选人" prop="interviewName">
               <el-input v-model="form.interviewName" placeholder="请输入候选人姓名" />
             </el-form-item>
             <el-form-item label="岗位状态" prop="status">
@@ -283,7 +281,7 @@ import {
 import { formatJson } from '@/utils'
 
 export default {
-  name: 'SysPostManage',
+  name: 'SysInterviewManage',
   data() {
     return {
       // 遮罩层
@@ -310,10 +308,9 @@ export default {
       // 查询参数
       queryParams: {
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 50,
         interviewName: undefined,
-        postCode: undefined,
-        postName: undefined,
+        postId: undefined,
         status: undefined
       },
       // 表单参数
@@ -344,11 +341,10 @@ export default {
         pageSize: 10000
       }).then((response) => {
         response.data.list.forEach((element) => {
-          const { postId, postName } = element
-          this.postMap[postId] = postName
+          element['postId'] += ''
+          this.postMap[element['postId']] = element['postName']
+          this.postOptions.push(element)
         })
-        this.postOptions = response.data.list
-
         this.getList()
       })
     },
@@ -367,7 +363,7 @@ export default {
     },
     // 岗位状态字典翻译
     postFormat(row) {
-      return this.postMap[row.postCode]
+      return this.postMap[row.postId]
     },
     // 取消按钮
     cancel() {
@@ -378,7 +374,7 @@ export default {
     reset() {
       this.form = {
         interviewId: undefined,
-        postCode: undefined,
+        postId: undefined,
         interviewName: undefined,
         status: '1',
         remark: undefined
@@ -415,14 +411,15 @@ export default {
       getInterview(interviewId).then((response) => {
         this.form = response.data
         this.form.status = String(this.form.status)
-        this.open = true
         this.title = '修改候选人'
+        this.open = true
       })
     },
     /** 提交按钮 */
     submitForm: function() {
       this.$refs['form'].validate((valid) => {
         if (valid) {
+          // this.form.postId = this.form.postId + ''
           this.form.status = parseInt(this.form.status)
           if (this.form.interviewId !== undefined) {
             updateInterview(this.form, this.form.interviewId).then((response) => {
@@ -487,11 +484,11 @@ export default {
               '候选人姓名',
               '岗位名称',
               '排序',
-              '创建时间'
+              '操作时间'
             ]
             const filterVal = [
               'interviewId',
-              'postCode',
+              'postId',
               'postName',
               'sort',
               'createdAt'
