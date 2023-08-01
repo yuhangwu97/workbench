@@ -1,8 +1,9 @@
 package version
 
 import (
-	"github.com/go-admin-team/go-admin-core/sdk/config"
 	"runtime"
+
+	"github.com/go-admin-team/go-admin-core/sdk/config"
 
 	"go-admin/cmd/migrate/migration"
 	"go-admin/cmd/migrate/migration/models"
@@ -38,6 +39,7 @@ func _1599190683659Tables(db *gorm.DB, version string) error {
 			new(models.SysJob),
 			new(models.SysConfig),
 			new(models.SysApi),
+			new(models.SysInterview),
 			new(models.TbDemo),
 		)
 		if err != nil {

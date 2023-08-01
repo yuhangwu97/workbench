@@ -1,8 +1,8 @@
 {
-  "name": "go-admin",
+  "name": "xiaowan_workbenck",
   "version": "2.0.9",
   "description": "A magical vue admin. An out-of-box UI solution for enterprise applications. Newest development stack of vue. Lots of awesome features",
-  "author": "https://github.com/wenjianzhang",
+  "author": "yuhang_wu",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -37,10 +37,7 @@
     "admin-template",
     "management-system"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/go-admin-team/go-admin.git"
-  },
+  "repository": {},
   "bugs": {
     "url": "https://github.com/go-admin-team/go-admin/issues"
   },

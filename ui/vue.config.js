@@ -14,7 +14,7 @@ const name = defaultSettings.title || 'go-dmin' // page title
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 8081 // dev port
 
 // const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 
